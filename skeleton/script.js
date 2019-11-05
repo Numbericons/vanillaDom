@@ -46,10 +46,27 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- your code here!
 
   const puppyForm = (event) => {
-    console.log('click!')
     const form = document.querySelector('.photo-form-container');
+    form.className = "photo-form-container";
   }
 
   const showPupForm = document.querySelector('.photo-show-button');
   showPupForm.addEventListener("click", puppyForm);
+
+  const addPhoto = (event) => {
+    event.preventDefault();
+
+    const urlInput = document.querySelector('.photo-url-input');
+    const url = urlInput.value;
+    urlInput.value = "";
+
+    const newImg = document.createElement('img');
+    newImg.src = url;
+
+    const ul = document.querySelector('.dog-photos');
+    ul.appendChild(newImg);
+  }
+
+  const photoSub = document.querySelector('.photo-url-submit');
+  photoSub.addEventListener("click", addPhoto);
 });
